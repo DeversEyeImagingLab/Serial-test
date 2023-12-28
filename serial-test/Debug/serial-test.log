@@ -1,3 +1,2 @@
-﻿  main.cpp
-C:\Users\imaginglab\Documents\GitHub\Serial-test\serial-test\main.cpp(17,10): warning C4930: 'CSerial serialPort(void)': prototyped function not called (was a variable definition intended?)
-  serial-test.vcxproj -> C:\Users\imaginglab\Documents\GitHub\Serial-test\serial-test\Debug\serial-test.exe
+﻿  Serial.cpp
+C:\Users\tnemeth\Documents\GitHub\Serial-test\serial-test\CSerial\Serial.cpp(34,2): error C4996: 'mbstowcs': This function or variable may be unsafe. Consider using mbstowcs_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.

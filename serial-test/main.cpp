@@ -1,20 +1,31 @@
 // CSerial Library
+// documentation: https://www.codeguru.com/network/cserial-a-c-class-for-serial-communications/
 #include "CSerial/Serial.h"
 
 // Other
 #include <iostream>
+//#include <cstdlib>
 
 static const int STIM_SERIAL_PORT_NUMBER = 5; // 5 for COM 5
-static const int STIM_SERIAL_BAUD_RATE = 250000; // Highest "official" Windows
-												 // baud rate, Arduino may be able to go
-												 // up to 2M baud.
+static const int STIM_SERIAL_BAUD_RATE = 9600; // Baud rate from civillaser documentation
 
 int main(int argc, char* argv[])
 {
 	//std::cout << "Hello World!" << std::endl;
 
-	// Arduino
-	CSerial serialPort();
+	// Create serial port
+	CSerial serialPort;
+
+    // Open serial port
+    if (serialPort.Open(STIM_SERIAL_PORT_NUMBER, STIM_SERIAL_BAUD_RATE))
+    {
+        std::cout << "Serial connection opened to port COM" << STIM_SERIAL_PORT_NUMBER << std::endl;
+    }
+    else
+    {
+        std::cout << "Failed to open serial connection.\nExiting program.\n";
+        return -1;
+    }
 
     // Open serial port
     //if (!serialPort->Open(STIM_SERIAL_PORT_NUMBER, STIM_SERIAL_BAUD_RATE))
@@ -23,6 +34,18 @@ int main(int argc, char* argv[])
     //else
     //    std::cout << "Opened serial port successfully\n";
 
+    // Send data
+    // info on sending HEX data:
+    // https://github.com/itas109/CSerialPort/issues/38 
+    // converting hex to char:
+    // https://www.rapidtables.com/convert/number/hex-to-ascii.html
+    // https://stackoverflow.com/questions/1070497/c-convert-hex-string-to-signed-integer
+
+    //  -   Try turning on / off laser
+    // EF EF 03 26 01 08
+    // ïï&
+    std::string powerOn = "ïï&";
+    serialPort.SendData(powerOn.c_str(), strlen(powerOn.c_str()));
 
     //serialPort->SendData(stop_projector_command, strlen(stop_projector_command));
 
