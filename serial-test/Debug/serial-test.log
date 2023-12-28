@@ -1,0 +1,3 @@
+﻿  main.cpp
+C:\Users\imaginglab\Documents\GitHub\Serial-test\serial-test\main.cpp(17,10): warning C4930: 'CSerial serialPort(void)': prototyped function not called (was a variable definition intended?)
+  serial-test.vcxproj -> C:\Users\imaginglab\Documents\GitHub\Serial-test\serial-test\Debug\serial-test.exe
